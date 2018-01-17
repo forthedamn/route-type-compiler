@@ -17,7 +17,8 @@ describe('template', ()=> {
       {
         path: 'api/demo/error/path/somepath',
         methedName: 'error',
-        methodType: 'GET'
+        methodType: 'GET',
+        response: 'ITodo'
       });
   });
 

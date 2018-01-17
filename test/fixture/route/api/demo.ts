@@ -19,7 +19,7 @@ export default class DemoCtrl extends Controller {
   }
 
   @route('/error/path/somepath', HttpMethod.GET, other)
-  async error(): Promise<ITodo[]> {
+  async error(): Promise<ITodo> {
     throw {
       code: 12345,
       msg: '出错了',

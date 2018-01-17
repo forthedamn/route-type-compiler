@@ -1,5 +1,7 @@
 import Template from './route_template';
 
+const BASE_TYPE = ['string', 'number', 'boolean', 'any'];
+
 /**
  * 根据 route 文件生成对应的 type
  * 
@@ -32,15 +34,19 @@ export default function(filePathList: Array<string>, input: string) {
   const getRoutePool = [];
     /**
    * 生成所有 post 类型 path：method 键值对，例如：
-   * 'api/demo': typeof demo.alive,
+   * 'api/demo': () => Promise<type>,
    */
   const postRoutePool = [];
-  function routeGen(path: string, instanceName:string, method: string, type: 'GET'|'POST') {
+  function routeGen(path: string, response: string, type: 'GET'|'POST') {
+
+    if(!BASE_TYPE.some(type => type === response)) {
+      response = `RouteResponse.${response}`;
+    }
     if (type === 'GET') {
-      getRoutePool.push(`'${path}': typeof ${instanceName}.${method}`);
+      getRoutePool.push(`'${path}': () => Promise<${response}>`);
     }
     if (type === 'POST') {
-      postRoutePool.push(`'${path}': typeof ${instanceName}.${method}`);
+      postRoutePool.push(`'${path}': () => Promise<${response}>`);
     }
   }
 
@@ -52,7 +58,7 @@ export default function(filePathList: Array<string>, input: string) {
     importGen(classtemplate.routeInstanceName, classtemplate.routeFilePath);
     instanceGen(classtemplate.routeInstanceName);
     classtemplate.methodList.forEach(method => {
-      routeGen(method.path, classtemplate.routeInstanceName, method.methedName, method.methodType);
+      routeGen(method.path, method.response, method.methodType);
     });
   });
 

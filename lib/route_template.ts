@@ -9,7 +9,8 @@ interface IMethod {
   // url path
   path: string;
   methedName: string;
-  methodType: MethodType
+  methodType: MethodType,
+  response: string,
 }
 
 /**
@@ -18,7 +19,7 @@ interface IMethod {
  * 
  * @class Template
  */
-class Template {
+class RouteTemplate {
   // route 文件路径
   private filePath: string;
   // 命令行键入的 route 文件夹
@@ -70,6 +71,7 @@ class Template {
         path: routeClass.prefix + method.path,
         methedName: method.methodName,
         methodType: method.httpMethod,
+        response: method.response,
       }
     });
   }
@@ -109,4 +111,4 @@ class Template {
 
 }
 
-export default Template;
+export default RouteTemplate;
