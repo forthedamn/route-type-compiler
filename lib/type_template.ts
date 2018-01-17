@@ -44,10 +44,10 @@ export default function(filePathList: Array<string>, input: string) {
       response = `RouteResponse.${response}`;
     }
     if (type === 'GET') {
-      getRoutePool.push(`'${path}': () => Promise<${response}>`);
+      getRoutePool.push(`'${path}': Promise<${response}>`);
     }
     if (type === 'POST') {
-      postRoutePool.push(`'${path}': () => Promise<${response}>`);
+      postRoutePool.push(`'${path}': Promise<${response}>`);
     }
   }
 

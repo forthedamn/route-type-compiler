@@ -27,7 +27,7 @@ class TemplateEngine {
 
   compile(moduleName: string, version: string) {
     const template = this.getTemplate(moduleName, version);
-    const typeFilePath = path.join(process.cwd(), this.output, './index.d.ts');
+    const typeFilePath = path.join(process.cwd(), this.output, './HttpClient.d.ts');
     fs.ensureFileSync(typeFilePath);
     fs.writeFileSync(typeFilePath, template)
   }

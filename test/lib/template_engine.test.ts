@@ -8,7 +8,7 @@ const fileList = [
   './test/fixture/route/demo.ts',
 ];
 const input = './test/fixture/route';
-const output = './test/fixture/route';
+const output = './test/fixture/declaration';
 
 describe('engine', ()=> {
   it('engine', () => {

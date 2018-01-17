@@ -29,7 +29,7 @@ glob(`${input}/**/*.ts`, (er, files) => {
     return !path.match(subfix) && !path.match(index);
   });
 
-  const engine = new TemplateEngine(files, output, input);
+  const engine = new TemplateEngine(files, input, output);
   engine.compile(moduleName, version);
 
   console.info('[Route-Type-Compiler] Route Type Compile success!');
