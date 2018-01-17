@@ -1,0 +1,30 @@
+{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "target": "es2015",
+    "module": "commonjs",
+    "allowJs": false,
+    "pretty": true,
+    "noImplicitAny": false,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "noEmitOnError": false,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
+    "noFallthroughCasesInSwitch": true,
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "importHelpers": true
+
+  },
+  "typeRoots": [
+    // add path to @types
+    "node_modules/@types"
+ ],
+  "exclude": [
+    "node_modules",
+    "test/fixture"
+  ]
+}
