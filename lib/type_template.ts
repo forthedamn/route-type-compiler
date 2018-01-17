@@ -17,6 +17,7 @@ export default function(filePathList: Array<string>, input: string) {
    */
   const importPool = [];
   function importGen(instanceName: string, routeFilePath: string) {
+    routeFilePath = routeFilePath.replace(/\.\//, '../route/');
     importPool.push(`import ${upperHelper(instanceName)} from '${routeFilePath.replace(/.ts/, '')}';`);
   }
   /**
@@ -61,6 +62,9 @@ export default function(filePathList: Array<string>, input: string) {
       routeGen(method.path, method.response, method.methodType);
     });
   });
+
+  // 所有的 route response 都来自于 RouteResponse.d.ts
+  importPool.unshift(`import * as RouteResponse from './RouteResponse';`)
 
   return {
     importPool,

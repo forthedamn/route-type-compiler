@@ -4,8 +4,9 @@
 * DO NOT EDIT UNLESS YOU ARE SURE THAT YOU KNOW WHAT YOU ARE DOING
 */
 
-import ApiDemo from './api/demo';
-import Demo from './demo';
+import * as RouteResponse from './RouteResponse';
+import ApiDemo from '../route/api/demo';
+import Demo from '../route/demo';
 
 declare module 'test' {
   const apiDemo: ApiDemo;
