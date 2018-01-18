@@ -1,6 +1,6 @@
 import Template from './route_template';
 
-const BASE_TYPE = ['string', 'number', 'boolean', 'any'];
+const BASE_TYPE = ['string', 'number', 'boolean', 'any', 'void'];
 
 /**
  * 根据 route 文件生成对应的 type
