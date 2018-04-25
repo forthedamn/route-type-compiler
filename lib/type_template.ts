@@ -1,7 +1,5 @@
 import Template from './route_template';
 
-const BASE_TYPE = ['string', 'number', 'boolean', 'any', 'void'];
-
 /**
  * 根据 route 文件生成对应的 type
  * 
@@ -35,19 +33,16 @@ export default function(filePathList: Array<string>, input: string) {
   const getRoutePool = [];
     /**
    * 生成所有 post 类型 path：method 键值对，例如：
-   * 'api/demo': () => Promise<type>,
+   * 'api/demo': () => ReturnType<typeof routeClass.method>,
    */
   const postRoutePool = [];
-  function routeGen(path: string, response: string, type: 'GET'|'POST') {
+  function routeGen(path: string, type: 'GET'|'POST', instanceName: string, methodName: string) {
 
-    if(!BASE_TYPE.some(type => type === response)) {
-      response = `RouteResponse.${response}`;
-    }
     if (type === 'GET') {
-      getRoutePool.push(`'${path}': Promise<${response}>`);
+      getRoutePool.push(`'${path}': ReturnType<typeof ${instanceName}.${methodName} >`);
     }
     if (type === 'POST') {
-      postRoutePool.push(`'${path}': Promise<${response}>`);
+      postRoutePool.push(`'${path}': ReturnType<typeof ${instanceName}.${methodName} >`);
     }
   }
 
@@ -56,15 +51,14 @@ export default function(filePathList: Array<string>, input: string) {
    */
   filePathList.forEach(filePath => {
     const classtemplate = new Template(filePath, input);
-    importGen(classtemplate.routeInstanceName, classtemplate.routeFilePath);
-    instanceGen(classtemplate.routeInstanceName);
-    classtemplate.methodList.forEach(method => {
-      routeGen(method.path, method.response, method.methodType);
+    // class 实例名称
+    const { routeInstanceName, routeFilePath, methodList }  = classtemplate;
+    importGen(routeInstanceName, routeFilePath);
+    instanceGen(routeInstanceName);
+    methodList.forEach(method => {
+      routeGen(method.path,  method.methodType, routeInstanceName, method.methedName);
     });
   });
-
-  // 所有的 route response 都来自于 RouteResponse.d.ts
-  importPool.unshift(`import * as RouteResponse from './RouteResponse';`)
 
   return {
     importPool,

@@ -12,7 +12,7 @@ describe('generator', ()=> {
       ],
       './test/fixture/route');
       
-      expect(res.importPool.length).toEqual(3);
+      expect(res.importPool.length).toEqual(2);
       expect(res.instancePool.length).toEqual(2);
       expect(res.getRoutePool.length).toEqual(6);
       expect(res.postRoutePool.length).toEqual(2);
