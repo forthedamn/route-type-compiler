@@ -1,6 +1,6 @@
 {
   "name": "route-type-compiler",
-  "version": "1.2.0",
+  "version": "1.2.3",
   "description": "Compile Route Type for Typescript",
   "main": "index.js",
   "scripts": {
@@ -15,9 +15,6 @@
   ],
   "author": "zhongguoxin <zhongguoxin@meituan.com>",
   "license": "ISC",
-  "peerDependencies": {
-    "typescript": "~2.8.3"
-  },
   "dependencies": {
     "commander": "^2.13.0",
     "fs-extra": "^5.0.0",
@@ -27,6 +24,7 @@
   "devDependencies": {
     "@types/jest": "^22.0.1",
     "@types/node": "^9.3.0",
+    "typescript": "^2.9.0",
     "eslint": "^4.15.0",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.8.0",
