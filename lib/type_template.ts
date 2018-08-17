@@ -17,7 +17,7 @@ export default function(filePathList: Array<string>, input: string) {
   function importGen(instanceName: string, routeFilePath: string) {
     // TODO: 动态配置
     routeFilePath = routeFilePath.replace(/\.\//, '../server/route/');
-    importPool.push(`import ${upperHelper(instanceName)} from '${routeFilePath.replace(/.ts/, '')}';`);
+    importPool.push(`import ${upperHelper(instanceName)} from '${routeFilePath.replace(/\.ts/, '')}';`);
   }
   /**
    * 生成实例，例如：
