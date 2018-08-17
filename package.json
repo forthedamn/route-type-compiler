@@ -1,6 +1,6 @@
 {
   "name": "route-type-compiler",
-  "version": "1.2.5",
+  "version": "1.2.6",
   "description": "Compile Route Type for Typescript",
   "main": "index.js",
   "scripts": {

@@ -7,8 +7,8 @@ describe('generator', ()=> {
   it('generator', () => {
     const res = generator(
       [
-        './test/fixture/route/api/demo.ts',
-        './test/fixture/route/demo.ts',
+        './test/fixture/route/api/demots.ts',
+        './test/fixture/route/demots.ts',
       ],
       './test/fixture/route');
       

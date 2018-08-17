@@ -3,12 +3,12 @@ require('jest');
 
 import Temlate from '../../lib/route_template';
 
-const template = new Temlate('./test/fixture/route/api/demo.ts', './test/fixture/route')
+const template = new Temlate('./test/fixture/route/api/demots.ts', './test/fixture/route')
 
 describe('template', ()=> {
   it('nameCamelize', () => {
-    const name = template.nameCamelize('/route/api/demo.ts');
-    expect(name).toEqual('routeApiDemo')
+    const name = template.nameCamelize('/route/api/demots.ts');
+    expect(name).toEqual('routeApiDemots')
   });
 
   it('routeList', ()=> {
@@ -23,10 +23,10 @@ describe('template', ()=> {
   });
 
   it('routeInstanceName', () => {
-    expect(template.routeInstanceName).toEqual('apiDemo');
+    expect(template.routeInstanceName).toEqual('apiDemots');
   });
 
   it('routeFilePath', () => {
-    expect(template.routeFilePath).toEqual('./api/demo.ts');
+    expect(template.routeFilePath).toEqual('./api/demots.ts');
   });
 });
